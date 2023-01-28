@@ -14,7 +14,7 @@ setup(
     author="Jay Punekar",
     description="This is my first End-to-End ML Project",
     packages= ["housing"],
-    install_requires=get_requirements_list()
+    install_requires=get_requirements_list().remove("-e .")
 )
 
 if __name__=="__main__":
