@@ -16,5 +16,9 @@ def index():
     logging.info("We are testing logging module")
     return "This is TESTING CI/CD pipeline"
 
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    return "Testing Function"
+
 if __name__=='__main__':
     app.run(debug=True)
