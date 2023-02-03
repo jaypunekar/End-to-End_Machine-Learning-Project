@@ -18,7 +18,7 @@ def index():
 
 @app.route("/test", methods=["GET", "POST"])
 def test():
-    return "Testing Function"
+    return "CI/CD Test"
 
 if __name__=='__main__':
     app.run(debug=True)
