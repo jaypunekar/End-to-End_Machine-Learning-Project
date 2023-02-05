@@ -5,6 +5,8 @@ from housing.exception import HousingException
 
 app = Flask(__name__)
 
+# THIS IS MODULAR PROGRAMMING
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     try:
