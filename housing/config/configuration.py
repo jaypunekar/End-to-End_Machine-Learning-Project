@@ -6,10 +6,10 @@ from housing.entity.config_entity import ModelPusherConfig
 from housing.entity.config_entity import ModelTrainerConfig   
 from housing.entity.config_entity import TrainingPipelineConfig   
 from housing.util.util import read_yaml_file
-from housing.constant import *
 from housing.exception import HousingException
-import os, sys
 from housing.logger import logging
+from housing.constant import *
+import os, sys
 
 #MODULAR PROGRAMMING
 
