@@ -20,7 +20,10 @@ def index():
 
 @app.route("/test", methods=["GET", "POST"])
 def test():
-    return "CI/CD Test"
+    try:
+        return "CI/CD Test"
+    except Exception as e:
+        raise HousingException(e, sys) from e
 
 if __name__=='__main__':
     app.run(debug=True)
