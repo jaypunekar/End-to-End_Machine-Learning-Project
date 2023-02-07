@@ -11,12 +11,12 @@ app = Flask(__name__)
 def index():
     try:
         raise Exception("We testing custom exception")
+        return "This is TESTING CI/CD pipeline"
     except Exception as e:
         housing = HousingException(e, sys)
         logging.info(housing.error_message)
     
     logging.info("We are testing logging module")
-    return "This is TESTING CI/CD pipeline"
 
 @app.route("/test", methods=["GET", "POST"])
 def test():
