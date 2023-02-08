@@ -2,7 +2,6 @@ from housing.entity.config_entity import DataIngestionConfig
 from housing.exception import HousingException
 from housing.logger import logging
 import os, sys
-import housing.entity.config_entity import data_validation
 
 class DataIngestion:
     def __init__(self, data_ingestion_config: DataIngestionConfig):
