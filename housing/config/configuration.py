@@ -70,6 +70,7 @@ class Configuration:
         except Exception as e:
             raise HousingException(e, sys) from e
 
+
     def get_data_validation_config(self) -> DataValidationConfig:
         pass
 
@@ -100,5 +101,4 @@ class Configuration:
         except Exception as e:
             raise HousingException(e, sys) from e
 
-
-#MODULAR PROGRAMMING
+#Modular Programming
