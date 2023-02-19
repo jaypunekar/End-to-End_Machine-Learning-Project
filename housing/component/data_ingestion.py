@@ -65,53 +65,52 @@ class DataIngestion:
 
             file_name = os.listdir(raw_data_dir)[0]
 
-            housing_file_path = os.path.join(raw_data_dir, file_name)
-            logging.info(f"Reading csv files: [{housing_file_path}]")
-            housing_data_frame = pd.read_csv(housing_file_path)            
-        
+            housing_file_path = os.path.join(raw_data_dir,file_name)
+
+
+            logging.info(f"Reading csv file: [{housing_file_path}]")
+            housing_data_frame = pd.read_csv(housing_file_path)
+
             housing_data_frame["income_cat"] = pd.cut(
                 housing_data_frame["median_income"],
                 bins=[0.0, 1.5, 3.0, 4.5, 6.0, np.inf],
-                labels=[1, 2, 3, 4, 5]
+                labels=[1,2,3,4,5]
             )
-            logging.info("Splitting into train and test")
+            
+
+            logging.info(f"Splitting data into train and test")
             strat_train_set = None
             strat_test_set = None
 
             split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
 
-            for train_index, test_index in split.split(housing_data_frame, housing_data_frame["income_cat"]):
-                strat_train_set = housing_data_frame.loc[train_index].drop(["income_cat"], axis=1)
-                strat_test_set = housing_data_frame.loc[test_index].drop(["income_cat"], axis=1)
+            for train_index,test_index in split.split(housing_data_frame, housing_data_frame["income_cat"]):
+                strat_train_set = housing_data_frame.loc[train_index].drop(["income_cat"],axis=1)
+                strat_test_set = housing_data_frame.loc[test_index].drop(["income_cat"],axis=1)
 
-            train_file_path = os.path.join(
-                self.data_ingestion_config.ingested_train_dir,
-                file_name 
-            )
+            train_file_path = os.path.join(self.data_ingestion_config.ingested_train_dir,
+                                            file_name)
 
-            test_file_path = os.path.join(
-                self.data_ingestion_config.ingested_test_dir,
-                file_name
-            )
+            test_file_path = os.path.join(self.data_ingestion_config.ingested_test_dir,
+                                        file_name)
+            
+            if strat_train_set is not None:
+                os.makedirs(self.data_ingestion_config.ingested_train_dir,exist_ok=True)
+                logging.info(f"Exporting training datset to file: [{train_file_path}]")
+                strat_train_set.to_csv(train_file_path,index=False)
 
             if strat_test_set is not None:
-                os.mkdir(self.data_ingestion_config.ingested_test_dir, exist_ok=True)
-                logging.info(f"Exporting training dataset to file: [{train_file_path}]")
-                strat_test_set.to_csv(test_file_path, index=False)
-
-            if strat_train_set is not None:
-                os.mkdir(self.data_ingestion_config.ingested_train_dir, exist_ok=True)
-                logging.info(f"Exporting training dataset to file: [{train_file_path}]")
-                strat_train_set.to_csv(train_file_path, index=False)
-
-            data_ingestion_artifact = DataIngestionArtifact(
-                train_file_path=train_file_path,
-                test_file_path=test_file_path,
-                is_ingested=True,
-                message=f"Data ingestion compleated successfully"
-            )
+                os.makedirs(self.data_ingestion_config.ingested_test_dir, exist_ok= True)
+                logging.info(f"Exporting test dataset to file: [{test_file_path}]")
+                strat_test_set.to_csv(test_file_path,index=False)
             
-            logging.info(f"Data ingestion artifact: [{data_ingestion_artifact}]")
+
+            data_ingestion_artifact = DataIngestionArtifact(train_file_path=train_file_path,
+                                test_file_path=test_file_path,
+                                is_ingested=True,
+                                message=f"Data ingestion completed successfully."
+                                )
+            logging.info(f"Data Ingestion artifact:[{data_ingestion_artifact}]")
             return data_ingestion_artifact
 
         except Exception as e:
