@@ -68,6 +68,7 @@ class DataValidation:
             # 1. Number of columns
             # 2. Check the values of ocean proximity
             # 3. Check column names
+            # 4. Check for all category data
             validation_status = True
             return validation_status
         except Exception as e:
