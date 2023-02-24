@@ -147,6 +147,9 @@ class Configuration:
                 transformed_test_dir=transformed_test_dir
             )
 
+            logging.info(f"Data transformation config: {data_transformation_config}")
+            return data_transformation_config
+
         except Exception as e:
             raise HousingException(e, sys) from e
 
