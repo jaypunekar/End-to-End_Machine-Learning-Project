@@ -86,7 +86,7 @@ class ModelTrainer:
 
             logging.info(f"Best found model on both training and testing dataset.")
             
-            preprocessing_obj=  load_object(file_path=self.data_transformation_artifact.preprocessed_object_file_path)
+            preprocessing_obj =  load_object(file_path=self.data_transformation_artifact.preprocessed_object_file_path)
             model_object = metric_info.model_object
 
 
@@ -96,7 +96,7 @@ class ModelTrainer:
             save_object(file_path=trained_model_file_path,obj=housing_model)
 
 
-            model_trainer_artifact a=  ModelTrainerArtifact(is_trained=True,message="Model Trained successfully",
+            model_trainer_artifact =  ModelTrainerArtifact(is_trained=True,message="Model Trained successfully",
             trained_model_file_path=trained_model_file_path,
             train_rmse=metric_info.train_rmse,
             test_rmse=metric_info.test_rmse,
