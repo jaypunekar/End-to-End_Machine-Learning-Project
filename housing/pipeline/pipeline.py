@@ -15,7 +15,6 @@ from collections import namedtuple
 from datetime import datetime
 import pandas as pd
 from housing.constant import EXPERIMENT_DIR_NAME, EXPERIMENT_FILE_NAME
-import os, sys
 from housing.util.util import *
 
 class Pipeline():
