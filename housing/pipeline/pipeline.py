@@ -16,8 +16,9 @@ from datetime import datetime
 import pandas as pd
 from housing.constant import EXPERIMENT_DIR_NAME, EXPERIMENT_FILE_NAME
 from housing.util.util import *
+from threading import Thread
 
-class Pipeline():
+class Pipeline(Thread):
 
     def __init__(self, config:Configuration = Configuration()) -> None:
         try:
