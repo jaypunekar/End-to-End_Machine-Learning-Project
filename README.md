@@ -109,5 +109,10 @@ Data Drift:
 When your datset stats gets change we call it as data drift
 
 
+To Run the Application
+```
+python3 app.py
+```
+
 
 ## Write a function to get training file path from artifact dir
