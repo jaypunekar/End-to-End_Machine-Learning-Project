@@ -9,7 +9,7 @@ CURRENT_TIME_STAMP = get_current_time_stamp()
 
 #MODULAR PROGRAMMING
 
-ROOT_DIR = 'c:\\Users\\91973\\Downloads\\ML_Project\\Machine-Learning-Project'
+ROOT_DIR = os.getcwd()
 
 CONFIG_DIR = "config"
 CONFIG_FILE_NAME = "config.yaml"
