@@ -1,6 +1,17 @@
-# IMPORTANT: This Application is not complete and deployed yet
-Application url:
-### Software and account Requirement.
+# California House Price Predictor
+This regression model is based on a Kaggle [Dataset](https://www.kaggle.com/datasets/camnugent/california-housing-prices). You will get more information about the attributes of the dataset from the link I have provided.
+
+LINK: https://www.kaggle.com/datasets/camnugent/california-housing-prices
+
+## Contents
+- [Requirements](#software-and-account-requirement)
+- [Deploying Model](#running-the-model-locally)
+- [Adding to GIT](#add-files-to-git)
+- [Making Docker Image](#build-docker-image)
+- [Screenshots](#screenshots)
+
+
+### Software and account Requirement
 
 1. [Github Account](https://github.com)
 3. [VS Code IDE](https://code.visualstudio.com/download)
@@ -8,7 +19,19 @@ Application url:
 5. [GIT Documentation](https://git-scm.com/docs/gittutorial)
 
 
-Creating conda environment
+
+
+
+## Running the Model locally
+
+Clone the project.
+```
+git clone https://github.com/jaypunekar/HousingPricePredictor.git
+```
+```
+cd HousingPricePredictor
+```
+#### Creating conda environment
 ```
 conda create -p venv python==3.7 -y
 ```
@@ -24,7 +47,24 @@ conda activate venv
 pip install -r requirements.txt
 ```
 
-To Add files to git
+To run the model locally:
+```
+python application.py
+```
+
+OR 
+```
+python3 application.py
+```
+
+#### Onece the model is running, go to localhost:5000 to view the project
+
+
+
+### Add files to git
+
+#### To do so you will first have to fork the project into your github and clone it from there.
+
 ```
 git add .
 ```
@@ -60,12 +100,8 @@ To check remote url
 git remote -v
 ```
 
-To setup CI/CD pipeline in heroku we need 3 information
-1. HEROKU_EMAIL = 
-2. HEROKU_API_KEY = <>
-3. HEROKU_APP_NAME =
 
-BUILD DOCKER IMAGE
+### Build Docker Image
 ```
 docker build -t <image_name>:<tagname> .
 ```
@@ -112,8 +148,12 @@ When your datset stats gets change we call it as data drift
 
 To Run the Application
 ```
-python3 app.py
+python3 application.py
 ```
+## Screenshots
 
+[![img2.png](https://i.postimg.cc/tgcbjKkb/img2.png)](https://postimg.cc/Mc1N0rg3)
 
-## Write a function to get training file path from artifact dir
+[![img1.png](https://i.postimg.cc/d0kRWCSB/img1.png)](https://postimg.cc/wtzsM1zy)
+
+[![img-3.png](https://i.postimg.cc/fR30ZNjW/img-3.png)](https://postimg.cc/VJ8NB2V2)
